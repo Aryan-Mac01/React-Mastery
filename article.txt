@@ -9,3 +9,6 @@ The algorithm React uses to diffrentiate one tree with another to determine whic
 
 
 Reconciliation is the algorithm behind what is popularly understood as the "virtual DOM."
+
+
+Props -> Props make component reusable
