@@ -1,10 +1,14 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 
 function App() {
   const [length, setLength] = useState(8);
   const [noAllowed, setNoAllowed] = useState(false);
   const [character, setCharacter] = useState(false);
   const [password, setPassword] = useState("");
+
+  //useRef hook
+
+  const passwordRef = useRef(null)
 
   /*
     we have to use passwordGenertor function again and again (in length, in numberAllowed, in Character and others too) and to make our task easy
@@ -31,9 +35,14 @@ function App() {
     setPassword(pass);
   }, [length, noAllowed, character, setPassword]);
 
+  const copyPasswordToClipboard = useCallback(() => {
+    passwordRef.current?.select();
+    window.navigator.clipboard.writeText(password)
+  }, [password])
+
   useEffect(() => {
     passwordGenerator();
-  }, [length, noAllowed, character, passwordGenerator]);
+  }, [length, noAllowed, character, passwordGenerator]); //agar inn dependencies me kuch chhed chaad ho toh dubara se run kardo
   return (
     <div className="w-full max-w-md mx-auto shadow-md rounded-lg px-4 py-3 my-8 bg-gray-800 text-orange-500">
       <h1 className="text-white text-center my-3">Password Generator</h1>
@@ -44,8 +53,11 @@ function App() {
           className="outline-none w-full py-1 px-3"
           placeholder="Password"
           readOnly
+          ref={passwordRef}
         />
-        <button className="outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0">
+        <button 
+        onClick={copyPasswordToClipboard}
+        className="outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0">
           Copy
         </button>
       </div>
