@@ -12,3 +12,7 @@ Reconciliation is the algorithm behind what is popularly understood as the "virt
 
 
 Props -> Props make component reusable
+
+
+
+In most of the APIs we get the data in string format and not in JSON and we have to handle that string format
