@@ -15,4 +15,6 @@ Props -> Props make component reusable
 
 
 
-In most of the APIs we get the data in string format and not in JSON and we have to handle that string format
+In most of the APIs we get the data in string format and not in JSON and we have to handle that string forma
+
+'Link' tag in react is similar to the 'a' tag but unlike 'a' tag which refresh the whole page the 'link' tag doesn't refresh or restart the page
