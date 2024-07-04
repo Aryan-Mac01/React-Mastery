@@ -4,7 +4,17 @@ import {addTodo} from '../features/todo/todoSlice'
 
 function AddTodo() {
 
+    const [input, setInput] = useState('')
+    const dispatch = useDispatch() // it is used to add something is the todoList
+
+    //dispatch reducer ko use karte hue store ke andar value me changes karta hai
+
     
+    const addTodoHandler = (e) => {
+        e.preventDefault()
+        dispatch(addTodo(input))
+        setInput('') //clean the form
+    }
 
   return (
     <form onSubmit={addTodoHandler} className="space-x-3 mt-12">
